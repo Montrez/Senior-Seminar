@@ -1,0 +1,19 @@
+<% if @manager.name.nil? or @manager.name == "" %>
+    <h2>edit manager's profile</h2>
+<% else %>
+    <h2>edit <%= @manager.name %>'s profile</h2>
+<% end %>
+
+<%= simple_form_for(@manager, as: @manager, url: manager_path(@manager), html: { method: :patch }) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :name, required: true, autofocus: true %>
+    <%= f.input :address, required: true %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, "update" %>
+  </div>
+<% end %>
+

@@ -1,0 +1,23 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Type:</strong>
+  <%= @estimated_expense.type %>
+</p>
+
+<p>
+  <strong>Total:</strong>
+  <%= @estimated_expense.total %>
+</p>
+
+<p>
+  <strong>Source:</strong>
+  <%= @estimated_expense.request %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @estimated_expense.status %>
+</p>
+
+<%= link_to 'Edit', edit_estimated_expense_path(@estimated_expense) %> |

@@ -1,0 +1,248 @@
+<div class='container-fluid'>
+  <p id="notice"><%= notice %></p>
+
+  <div class='starter-template container-fluid'>
+    <% if account_signed_in? %>
+      <% unless current_account.nil?%>
+
+        <% if current_account.accountable_type == 'Submitter' || current_account.accountable_type == 'Manager' %>
+          <div class='container-fluid'>
+            <div class='row'>
+              <div class='col-sm-6'>
+                <table class='table table-striped table-bordered border' style='background-color:#fcfff9; box-shadow: 5px 10px 8px 10px #888888;'>
+                  <h4><i><%= current_account.accountable_type=='Submitter' ? 'My ' : ''%>Approved Travel Authorizations</i></h4>
+                  <th>Destination</th>
+                  <th>Start Date</th>
+                  <th>End Date</th>
+                  <th colspan=2>Actions</th>
+                  <% @approvedtriplist.each do |t| %> 
+
+                    <tr>
+                      <td><%=t.destination%></td>
+                      <td><%=t.fromdate%></td>
+                      <td><%=t.todate%></td>
+                      <td><%=button_to('View Form', trip_path(t), :method => :get, class:'btn btn-outline-info btn-sm')%></td>
+                      <td>
+                        <%=button_to(
+                          'Cancel Form', 
+                          trip_path(t), 
+                          :method => :delete, 
+                          data: {
+                            confirm: 'Do you really want to delete this form? 
+                            This action cannot be undone.'
+                          }, 
+                          class:'btn btn-outline-warning btn-sm')%>
+                    </td>
+                    </tr>
+                  <% end %>
+                </table>
+                <div class="apple_pagination">
+                  <div class="page_info">
+                    <%= 
+                      button_to(
+                        'View Full List',
+                        trips_path,
+                        :method => :get,
+                        class: 'btn btn-info')
+                      #page_entries_info @submitter_trips_approved
+                    %>
+                </div>
+                <%= 
+                  #will_paginate @submitter_trips_approved, :container => false
+                %>
+              </div>
+              </div>
+
+              <div class='col-sm-6'>
+                <table class='table table-striped table-bordered border' style='background-color:#fffefc; box-shadow: 5px 10px 8px 10px #888888;'>
+                  <h4><i><%=current_account.accountable_type=='Submitter' ? 'My ' : ''%>Pending Travel Authorizations</i></h4>
+                  <th>Destination</th>
+                  <th>Start Date</th>
+                  <th>End Date</th>
+                  <th colspan=2>Actions</th>
+                  <% @pendingtriplist.each do |t| %> 
+                    <tr>
+                      <td><%=t.destination%></td>
+                      <td><%=t.fromdate%></td>
+                      <td><%=t.todate%></td>
+                      <td><%=button_to('View Form', trip_path(t), :method => :get, class:'btn btn-outline-info btn-sm')%></td>
+                      <td>
+                        <%=button_to(
+                          'Cancel Form', 
+                          trip_path(t), 
+                          :method => :delete, 
+                          data: {
+                            confirm: 'Do you really want to delete this form? 
+                            This action cannot be undone.'
+                          }, 
+                          class:'btn btn-outline-warning btn-sm')%>
+                    </td>
+                    </tr>
+                  <% end %>
+                </table>
+                <div class="apple_pagination">
+                  <div class="page_info">
+                    <%=
+                      button_to(
+                        'View Full List',
+                        trips_path,
+                        :method => :get,
+                        class: 'btn btn-info')
+
+                      #page_entries_info @submitter_trips_pending 
+                    %>
+                </div>
+                <%= 
+                  #will_paginate @submitter_trips_pending, :container => false
+                %>
+              </div>
+              </div>
+            </div> <!--end row -->
+
+            <br><br><br>
+            <div class='row'>
+              <div class='col-sm-6'>
+                <table class='table table-striped table-bordered border' style='background-color:#fcfff9; box-shadow: 5px 10px 8px 10px #888888;'>
+                  <h4><i><%=current_account.accountable_type=='Submitter' ? 'My ' : ''%>Approved Expense Reports</i></h4>
+                  <th>Destination</th>
+                  <th>Start Date</th>
+                  <th>End Date</th>
+                  <th colspan=2>Actions</th>
+                  <% @approvedreportlist.each do |r| %> 
+                    <tr>
+                      <td><%= !r.trip.nil? ?
+                        r.trip.destination
+                      : "nil trip" %>
+                      </td>
+                      <td>
+                        <%= !r.trip.nil? ? 
+                          r.trip.fromdate
+                        : "nil trip" %>
+                      </td>
+                      <td>
+                        <%= !r.trip.nil? ? 
+                          r.trip.todate
+                        : "nil trip"
+                      %>
+                      </td>
+                      <td><%=button_to('View Form', expense_report_path(r), :method => :get, class:'btn btn-outline-info btn-sm')%></td>
+                      <td>
+                        <%=button_to(
+                          'Cancel Form', 
+                          expense_report_path(r), 
+                          :method => :delete, 
+                          data: {
+                            confirm: 'Do you really want to delete this form? 
+                            This action cannot be undone.'
+                          }, 
+                          class:'btn btn-outline-warning btn-sm')%>
+                    </td>
+                    </tr>
+                  <% end %>
+                </table>
+                <div class="apple_pagination">
+                  <div class="page_info">
+                    <%= 
+                      button_to(
+                        'View Full List',
+                        expense_reports_path,
+                        :method => :get,
+                        class: 'btn btn-info')
+                      #page_entries_info @submitter_reports_approved
+                    %>
+                </div>
+                <%= 
+                  #will_paginate @submitter_reports_approved, :container => false
+                %>
+              </div>
+              </div>
+
+              <div class='col-sm-6'>
+                <table class='table table-striped table-bordered border' style='background-color:#fffefc; box-shadow: 5px 10px 8px 10px #888888;'>
+                  <h4><i><%=current_account.accountable_type=='Submitter' ? 'My ' : ''%>Pending Expense Reports</i></h4>
+                  <th>Trip</th>
+                  <th>Start Date</th>
+                  <th>End Date</th>
+                  <th colspan=2>Actions</th>
+                  <% @pendingreportlist.each do |r| %> 
+                    <tr>
+                      <td><%= !r.trip.nil? ?
+                        r.trip.destination
+                      : "nil trip" %>
+                      </td>
+                      <td>
+                        <%= !r.trip.nil? ? 
+                          r.trip.fromdate
+                        : "nil trip" %>
+                      </td>
+                      <td>
+                        <%= !r.trip.nil? ? 
+                          r.trip.todate
+                        : "nil trip"
+                      %>
+                      </td>
+                      <td><%=button_to('View Form', expense_report_path(r), :method => :get, class:'btn btn-outline-info btn-sm')%></td>
+                      <td>
+                        <%=button_to(
+                          'Cancel Form', 
+                          expense_report_path(r), 
+                          :method => :delete, 
+                          data: {
+                            confirm: 'Do you really want to delete this form? 
+                            This action cannot be undone.'
+                          }, 
+                          class:'btn btn-outline-warning btn-sm')%>
+                    </td>
+                    </tr>
+                  <% end %>
+                </table>
+                <div class="apple_pagination">
+                  <div class="page_info">
+                    <%= 
+                      button_to(
+                        'View Full List',
+                        expense_reports_path,
+                        :method => :get,
+                        class: 'btn btn-info'
+                      )
+                      #page_entries_info @submitter_reports_pending 
+                    %>
+                </div>
+                <%= 
+                  #will_paginate @submitter_reports_pending, :container => false
+                %>
+              </div>
+              </div>
+            </div>
+          </div>
+        <% end %><!-- end submitter and manager block -->
+
+
+        <% if current_account.accountable_type == 'Approver' %>
+          <h3>Department of <%=current_account.accountable.department.department.titleize%></h3>
+
+          <%= content_tag :div, id: "catalog", 
+            budget: current_account.accountable.department.budget  do %>
+            <%= javascript_pack_tag 'catalog' %>
+          <% end %>
+                    <%= 
+                      button_to(
+                        'Add Comments',
+                        requests_path,
+                        :method => :get,
+                        class: 'btn btn-info'
+                      )
+                      #page_entries_info @submitter_reports_pending 
+                    %>
+
+        <% end %> <!-- end approver block -->
+
+      <% end %> <!-- end current account nil check -->
+    <% else %> <!-- account isn't signed in -->
+      <h1>JMJ Travel-Tracker</h1>
+      <p class="lead">Create, approve, and reimburse travel requests.
+      <br><br>Don't have an account? <a  href="<%=new_account_registration_path%>">Create One.</a>
+      </p>
+    <% end %>
+  </div>
+</div>

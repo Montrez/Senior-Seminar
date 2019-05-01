@@ -1,0 +1,20 @@
+<% if @approver.name.nil? or @approver.name == "" %>
+    <h2>edit approver's profile</h2>
+<% else %>
+    <h2>edit <%= @approver.name %>'s profile</h2>
+<% end %>
+
+<%= simple_form_for(@approver, as: @approver, url: approver_path(@approver), html: { method: :patch }) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :name, required: true, autofocus: true %>
+    <%= f.input :address, required: true %>
+    <%= f.select :department, ['math', 'computer science', 'chemistry', 'biology'], label: 'Department' %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, "update" %>
+  </div>
+<% end %>
+

@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+heroku pg:reset DATABASE
+heroku run rake db:schema:load DISABLE_DATABASE_ENVIRONMENT_CHECK=1
+heroku run rake db:migrate
+heroku run rake db:seed

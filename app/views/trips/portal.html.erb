@@ -1,0 +1,225 @@
+  <div class='container-fluid justify-content-center text-center'>
+  <%= button_to 'back to trips list', trips_path, :method => :get,  class:'btn btn-outline-dark btn-sm'%>
+  <br><br>
+  <% unless current_account.nil? %>
+    <% if current_account.accountable_type == 'Submitter' %>
+      <div class='container-fluid'>
+        <div class="container border " style="background-color:white; box-shadow: 5px 10px 18px #888888;">
+          <br><br>
+          <div class="sticky">  <h4 style='text-align:center;'><i>Trip <%= @trip.id %> :
+                <%= @trip.status == false ? "Pending" : "Approved" %></i></h4></div>
+          <br><br><br>
+          <table class="table table-striped  table-bordered" style="border-width: thick;">
+            <tr>
+              <th>Destination</th>
+              <th>Purpose</th>
+              <th>Start Date</th>
+              <th>End Date</th>
+            </tr>
+            <tr>
+              <td><%=@trip.destination%></td>
+              <td><%=@trip.purpose%></td>
+              <td><%=@trip.todate%></td>
+              <td><%=@trip.fromdate%></td>
+            </tr>
+            <tr>
+              <% @j = 1 %>
+              <% @trip.estimated_expenses.each do |exp| %>
+                <table class="table table-bordered table-light">
+                  <h6 style="text-align:left;">Expense <%= @j %> <% @j = @j + 1 %> </h6>
+                  <th>type</th>
+                  <th>total</th>
+                  <th>status</th>
+                  <tr>
+                    <td><%= exp.expense_type %></td>
+                    <td><%= exp.total %></td>
+                    <td><%= exp.status == false ? "Pending" : "Approved" %></td>
+                  </tr>
+                  <% @k = 1 %>
+                  <% exp.requests.each do |req|  %>
+                    <table class="table table-bordered">
+                      <h6 style='text-algin:right;'>Request <%= @k %><% @k = @k + 1 %></h6>
+                      <tr>
+                        <th>Department</th>
+                        <th>Percent Requested</th>
+                        <th>Amount from Total</th>
+                        <th>Request Status</th>
+                      </tr>
+                      <tr>
+                        <td><%= req.department %></td>
+                        <td><%= req.percentrequested %></td>
+                        <td><%= req.percentrequested * exp.total %></td>
+                        <td>
+                          <%= req.status == false ? "Pending" : "Approved" %>
+                        </td>
+                      </tr>
+                      <table>
+                        <br><br>
+                      <% end %> <!-- end requests foreach loop-->
+                      </table>
+                    <% end %> <!-- end expenses foreach loop  -->
+                    </table>
+                    <div class='container  justify-content-center text-center'>
+                      <%= button_to 'view travel authorization form', edit_trip_path(@trip), :method => :get, class: 'btn btn-primary '%>
+                    </div>
+                    <br><br>
+        </div><!-- contiainer containing the trips -->
+        <br><br>
+      </div>
+
+    <% elsif current_account.accountable_type == 'Manager' %>
+      <div class='container-fluid'>
+
+
+        <div class="container-fluid  justify-content-center text-center"> <!--might delete this entire div. -->
+          <br><br>
+          <div class="container border border-primary" style="border-width: thick; background-color: white;   box-shadow: 5px 10px 18px #888888;">
+            <br><br>
+            <div class="sticky"> <h4 style='text-align:center;'><i>Trip <%= @trip.id %> : 
+                  <%= @trip.status == false ? "Pending" : "Approved" %></i></h4></div>
+            <br><br>
+            <table class="table table-striped  table-bordered" style="border-width: thick;">
+              <tr>
+                <th>Destination</th>
+                <th>Purpose</th>
+                <th>Start Date</th>
+                <th>End Date</th>
+              </tr>
+              <tr>
+                <td><%=@trip.destination%></td>
+                <td><%=@trip.purpose%></td>
+                <td><%=@trip.todate%></td>
+                <td><%=@trip.fromdate%></td>
+              </tr>
+              <tr>
+                <% @j = 1 %>
+                <% @trip.estimated_expenses.each do |exp| %>
+                  <table class="table table-light">
+                    <h5>Expense <%= @j %> <% @j = @j + 1 %> </h5>
+                    <th>type</th>
+                    <th>total</th>
+                    <th>status</th>
+                    <tr>
+                      <td><%= exp.expense_type %></td>
+                      <td><%= exp.total %></td>
+                      <td><%= exp.status == false ? "Pending" : "Approved" %></td>
+                    </tr>
+                    <% @k = 1 %>
+                    <% exp.requests.each do |req|  %>
+                      <table class="table table-bordered">
+                        <h6 style="text-align:left;">Request <%= @k %><% @k = @k + 1 %></h6>
+                        <tr>
+                          <th>Department</th>
+                          <th>Percent Requested</th>
+                          <th>Amount from Total</th>
+                          <th>Request Status</th>
+                        </tr>
+                        <tr>
+                          <td><%= req.department %></td>
+                          <td><%= req.percentrequested %></td>
+                          <td><%= req.percentrequested * exp.total %></td>
+                          <td>
+                            <span class="approve-request<%=req.id%>">
+                              <%= req.status == false ? "Pending" : "Approved" %><br><br>
+                              <%= 
+                                req.status == false ? 
+                                  button_to(
+                                    "Approve Request",
+                                    approve_request_path(req), 
+                                    :method => :put, 
+                                    remote: true, 
+                                    class: 'btn btn-success btn-sm')
+                                :
+                                  button_to(
+                                    "Disapprove Request",
+                                    disapprove_request_path(req), 
+                                    :method => :put, 
+                                    remote: true, 
+                                    class: 'btn btn-warning btn-sm')
+                                  %>
+                          </span>
+                          </td>
+                        </tr>
+                        <table>
+                          <br><br>
+                        <% end %> <!-- end requests foreach loop-->
+                        </table>
+                        <% if exp.class.name == "EstimatedExpense" %>
+                          <span class='approve-estimated-expense<%=exp.id%>'>
+                            <%= 
+                              exp.status == false ? 
+                                button_to(
+                                  'Approve Estimated Expense',
+                                  approve_estimated_expense_path(exp),
+                                  :method => :put,
+                                  remote: true,
+                                  class: 'btn btn-success')
+                              :
+                                button_to(
+                                  'Disapprove Estimated Expense',
+                                  disapprove_estimated_expense_path(exp),
+                                  :method => :put,
+                                  remote: true,
+                                  class: 'btn btn-warning')
+                                %>
+                        </span>
+                      <% else %>
+                        <span class='approve-actual-expense<%=exp.id%>'>
+                          <%= 
+                            exp.status == false ? 
+                              button_to(
+                                'Approve Actual Expense',
+                                approve_actual_expense_path(exp),
+                                :method => :put,
+                                remote: true,
+                                class: 'btn btn-success')
+                            :
+                              button_to(
+                                'Disapprove Actual Expense',
+                                disapprove_actual_expense_path(exp),
+                                :method => :put,
+                                remote: true,
+                                class: 'btn btn-warning')
+                              %>
+                      </span>
+                    <% end %>
+                    <br><br><br><hr>
+                  <% end %> <!-- end expenses foreach loop  -->
+              </tr>
+            </tr>
+                      </table>
+                      <%= button_to 'view travel authorization form', edit_trip_path(@trip), :method => :get, class: 'btn btn-primary'%>
+                      <br><br>
+                      <span class="approve-trip<%=@trip.id%>">
+                        <% if @trip.status %>
+                          <%= button_to(
+                            "Disapprove Trip",
+                            disapprove_trip_path(@trip),
+                            :method => :put,
+                            remote: true,
+                            class: 'btn btn-warning')
+                          %>
+                      <% else %>
+                        <%= button_to(
+                          "Approve Trip",
+                          approve_trip_path(@trip),
+                          :method => :put,
+                          remote: true,
+                          class: 'btn btn-success')
+                        %>
+                    <% end %>
+
+                    </span>
+                    <br><br>
+          </div><!-- contiainer containing an unapproved trip --> <br><br>
+
+
+          hello manager
+        </div>
+      <% elsif current_account.accountable_type == 'Approver' %>
+        <div class='container-fluid'>
+          hello approver 
+        </div>
+      <% end %>
+    <% end %>
+</div>

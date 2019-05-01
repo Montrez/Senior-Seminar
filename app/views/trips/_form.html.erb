@@ -1,0 +1,57 @@
+<%= simple_form_for(@trip) do |f| %>
+  <%= f.error_notification %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+  <ul>
+    <% @trip.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+    <% end %>
+  </ul>
+
+  <div class="form-inputs" style="text-align:center;">
+    <%= f.input :destination %>
+    <%= f.input :purpose %>
+    <%= f.text_field :fromdate, 
+    data: { provide: "datepicker", 
+        'date-format': 'yyyy-mm-dd', 
+        'date-autoclose': 'true', 
+        'date-today-btn': 'linked',
+        'date-today-highlight': 'true'}, label: 'Start Date' %>
+    <%= f.text_field :todate, 
+    data: { provide: "datepicker", 
+        'date-format': 'yyyy-mm-dd', 
+        'date-autoclose': 'true', 
+        'date-today-btn': 'linked',
+        'date-today-highlight': 'true'} %>
+  </div>
+
+  <h3>Expenses:</h3>
+  <table class='table' style="text-align:center;">
+    <thead>
+    <tr>
+        <th></th>
+        <th>Type</th>
+        <th>Total</th>
+        <th></th>
+    </tr>
+  </thead>
+    <tbody class='estimated_expenses'>
+      <%= f.simple_fields_for :estimated_expenses do |builder| %>
+        <%= render 'estimated_expense_fields', f: builder %>
+      <% end %>
+    </tbody>
+  </table>
+
+  <div class="form-actions">
+    <%= link_to_add_association 'Add expense', f, :estimated_expenses , class: 'btn btn-primary', data: { association_insertion_node: '.estimated_expenses', association_insertion_method: :append } %>
+  </div>
+    <br><br><br>
+    <%= f.button :submit, class: "btn btn-success"%>
+
+  <div class="form-inputs" style="text-align:center;">
+    <% if current_account.accountable_type != 'Submitter' %>
+      <%= f.input :comment %>
+    <% else %>
+      <%= f.input :comment, disabled: true, hint: 'Only managers and approvers can add comments.' %>
+    <% end %>
+  </div>
+<% end %>

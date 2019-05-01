@@ -1,0 +1,35 @@
+<% if current_account.accountable_type == 'Submitter' %>
+  
+<% elsif current_account.accountable_type == 'Manager' %>
+<div class='container border border-dark'>
+    <br>
+    <div class='container border border-dark'>
+        <b>Most expensive estimated expense: </b>
+    </div>
+
+    <%= pie_chart Request.group(:department).count, title: 'Requests per Department'%><br>
+
+    <br><%= line_chart Request.group_by_day(:created_at).count, title: 'Recent Requests' %><br>
+
+    <br><%= column_chart Trip.group_by_day_of_week(:todate, format: "%a").count, discrete: true, title: 'Return Days of Trips' %><br>
+    
+    <br><%= column_chart Trip.group_by_day_of_week(:fromdate, format: "%a").count, title: 'Departure Days of Trips' %><br>
+
+    <br><%= scatter_chart Request.pluck(:percentrequested, :department), xtitle: "Cost", discrete: true, ytitle: "Department", discrete: true, title: 'Department vs Expenses' %><br>
+
+    <br><%= column_chart Request.group(:status).count, title: 'Approved vs Denied Requests' %><br>
+
+  <div>
+<% elsif current_account.accountable_type == 'Approver' %>
+    <div class='container border border-dark'>
+        <br>
+        <div class='container border border-dark'>
+            <b>Current Budget: </b> <%= number_to_currency(current_account.accountable.department.budget) %><br>
+            <b>Number of pending Requests: </b><%= Request.where(department: current_account.accountable.department.department, status: false).count %><br>
+            <b>Most expensive Request: </b><%= Request.where(department: current_account.accountable.department.department, status: false).order(:amount_from_total).last.amount_from_total %><br>
+            <b>Least expensive Request: </b><%= Request.where(department: current_account.accountable.department.department, status: false).order(:amount_from_total).first.amount_from_total %>
+        </div>
+        <br>
+        <%= line_chart Request.where(department: current_account.accountable.department.department).group_by_day(:created_at).count, title: 'Recent Requests' %><br>
+    </div>
+<% end %>

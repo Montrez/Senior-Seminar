@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+echo "redo all heroku migrations!"
+heroku run rake db:migrate VERSION=20190328020704 
+heroku run rake db:migrate VERSION=20190328193207 
+heroku run rake db:migrate VERSION=20190328193228 
+heroku run rake db:migrate VERSION=20190328193235 
+heroku run rake db:migrate VERSION=20190331174132 
+heroku run rake db:migrate VERSION=20190403012312 
+heroku run rake db:migrate VERSION=20190403012634 
+heroku run rake db:migrate VERSION=20190403012956 
+heroku run rake db:migrate VERSION=20190403014359 
+heroku run rake db:migrate VERSION=20190403014540 
+heroku run rake db:migrate VERSION=20190412214207
+heroku run rake db:migrate VERSION=20190412214735
+heroku run rake db:migrate VERSION=20190412224147

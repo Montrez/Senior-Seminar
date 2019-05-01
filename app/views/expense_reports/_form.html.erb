@@ -1,0 +1,51 @@
+<%= simple_form_for(@expense_report) do |f| %>
+  <%= f.error_notification %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+  <ul>
+    <% @expense_report.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+    <% end %>
+  </ul>
+
+   <div class="form-actions" style="text-align: center;">
+     <%= 
+      f.association(
+        :trip,
+        collection: Trip.where(status:  true, submitter_id: current_account.accountable),
+        label_method: :destination,
+        prompt: "Choose an Approved Trip"
+      )
+     %>
+
+
+
+   <h3>Actual Expenses</h3>
+   <table class='table'>
+     <thead>
+     <tr>
+       <th></th>
+       <th>Date Incurred</th>
+       <th>Type</th>
+       <th>Total</th>
+     </tr>
+     </thead>
+     <tbody  class='actual_expenses'>
+      <%= f.simple_fields_for :actual_expenses do |builder| %>
+           <%= render 'actual_expense_fields', f: builder%>
+      <% end %>
+     </tbody>
+   </table>
+
+
+          <%= link_to_add_association 'Add Actual Expense', f, :actual_expenses , class: 'btn btn-primary', data: { association_insertion_node: '.actual_expenses', association_insertion_method: :append } %>
+          <br><br>
+      <%= f.button :submit, class: 'btn btn-outline-success' %>
+  </div>
+  <div class="form-inputs" style="text-align:center;">
+    <% if current_account.accountable_type != 'Submitter' %>
+      <%= f.input :comment %>
+    <% else %>
+      <%= f.input :comment, disabled: true, hint: 'Only managers and approvers can add comments.' %>
+    <% end %>
+  </div>
+<% end %>

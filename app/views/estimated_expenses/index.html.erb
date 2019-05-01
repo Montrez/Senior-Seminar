@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Estimated Expenses</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Total</th>
+      <th>Source</th>
+      <th>Status</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @estimated_expenses.each do |estimated_expense| %>
+      <tr>
+        <td><%= estimated_expense.type %></td>
+        <td><%= estimated_expense.total %></td>
+        <td><%= estimated_expense.source %></td>
+        <td><%= estimated_expense.status %></td>
+        <td><%= link_to 'Show', estimated_expense %></td>
+        <td><%= link_to 'Edit', edit_estimated_expense_path(estimated_expense) %></td>
+        <td><%= link_to 'Destroy', estimated_expense, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Estimated Expense', new_estimated_expense_path %>

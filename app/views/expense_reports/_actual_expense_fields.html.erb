@@ -1,0 +1,24 @@
+<tr class="nested-fields">
+  <td>
+    <%= link_to_remove_association "Delete expense", f, class: 'btn btn-primary btn-xs' %>
+  </td>
+  <td><%= f.text_field :dateincurred, 
+    data: { provide: "datepicker", 
+        'date-format': 'yyyy-mm-dd', 
+        'date-autoclose': 'true', 
+        'date-today-btn': 'linked',
+        'date-today-highlight': 'true'}, label: 'Start Date' %></td>
+  <td><%= f.select :expense_type, ['food', 'lodging', 'transportation', 'other'] %></td>
+  <td><%= f.input :total, label: false %></td>
+  <td>
+    <%= f.file_field :imageurl, id: :actual_expense_imageurl %>
+  </td>
+    <td>
+      <%= link_to_add_association 'Add request', f, :requests , class: 'btn btn-primary'%>
+    </td>
+    <td class='requests'>
+      <%= f.simple_fields_for :requests do |builder| %>
+        <%= render 'request_fields', f: builder %>
+      <% end %>
+    </td>
+</tr>

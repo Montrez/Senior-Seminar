@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Type:</strong>
+  <%= @actual_expense.type %>
+</p>
+
+<p>
+  <strong>Total:</strong>
+  <%= @actual_expense.total %>
+</p>
+
+<p>
+  <strong>Source:</strong>
+  <%= @actual_expense.request %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @actual_expense.status %>
+</p>
+
+<p>
+  <strong>Dateincurred:</strong>
+  <%= @actual_expense.dateincurred %>
+</p>
+
+<p>
+  <strong>Imageurl:</strong>
+  <%= @actual_expense.imageurl %>
+</p>
+
+<%= link_to 'Edit', edit_actual_expense_path(@actual_expense) %> |

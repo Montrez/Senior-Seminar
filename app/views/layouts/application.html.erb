@@ -1,0 +1,82 @@
+<!doctype html>
+<html style="font-family: 'Liberation Mono';" lang="en">
+  <head>
+    <%= favicon_link_tag asset_path('logo.png'), :rel => 'icon', :type =>  'image/png' %>
+    <title>JMJTT</title>
+    <%= csrf_meta_tags %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true%>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  </head>
+
+  <body>
+
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <% if account_signed_in? && !current_account.nil? %>
+        <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="<%=home_index_path%>">Home</a>
+            </li>
+            <% if account_signed_in? && current_account.accountable_type == "AdminAccount" %>
+                <li role="nav-item" class="dropdown">
+                  <a class="nav-link" href="/admin" %> Admin Dashboard</a>
+                </li>
+                
+                <% end %>
+            <% if current_account.accountable_type == 'Submitter'%>
+            <li class="nav-item">
+              <a class="nav-link" href="<%=new_trip_path%>">Travel Authorization Form</a>
+            </li>
+              <% end %>
+              <% if current_account.accountable_type == "Submitter" %>
+              <li class="nav-item">
+                <a class="nav-link" href="<%=new_expense_report_path%>">Expense Report Form</a>
+              </li>
+              <% end %>
+              <% if current_account.accountable_type == "Manager" || current_account.accountable_type == "Approver" || current_account.accountable_type == "Submitter" %>
+            <li class="nav-item">
+              <a class="nav-link" href="<%=  home_data_path %>">Data Analytics Page</a>
+            </li>
+            <% end %>
+          </ul>  
+        <% end %>
+        <% if account_signed_in? && !current_account.nil? %>
+          <% if current_account.accountable_type == 'Manager'%>
+          <%= link_to(
+            current_account.accountable_type + " : " + (current_account.accountable.name.nil? ? "no name" : current_account.accountable.name) ,
+            edit_manager_path(current_account.accountable_id) ,
+            class: "nav-link")
+          %>
+      <% elsif current_account.accountable_type == 'Submitter'%>
+          <%= link_to(
+            current_account.accountable_type + " : " + (current_account.accountable.name.nil? ? "no name" : current_account.accountable.name) ,
+            edit_submitter_path(current_account.accountable_id) ,
+            class: "nav-link")
+          %>
+      <% elsif current_account.accountable_type == 'Approver'%>
+          <%= link_to(
+            current_account.accountable_type + " : " + (current_account.accountable.name.nil? ? "no name" : current_account.accountable.name) ,
+            edit_approver_path(current_account.accountable_id) ,
+            class: "nav-link")
+          %>
+      <% end %>
+        <%= button_to 'Sign out', destroy_account_session_path, :method=>'delete', class:"btn btn-outline-danger my-2 my-sm-0" %>
+      <% else %>
+        <%=button_to "Login", new_account_session_path, class: "btn btn-outline-success my-2 my-sm-0"%>
+      <% end %>
+        </div>
+
+    </nav>
+    <%if account_signed_in? && !current_account.nil? %>
+    <% end %>
+
+    <main class='<%= controller.controller_name %>'>
+    <%= yield %>
+    </main>
+
+  </body>
+</html>
+

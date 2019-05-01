@@ -1,0 +1,245 @@
+                      Prefix Verb   URI Pattern                                                                              Controller#Action
+                      search GET    /search(.:format)                                                                        home#search
+             expense_reports GET    /expense_reports(.:format)                                                               expense_reports#index
+                             POST   /expense_reports(.:format)                                                               expense_reports#create
+          new_expense_report GET    /expense_reports/new(.:format)                                                           expense_reports#new
+         edit_expense_report GET    /expense_reports/:id/edit(.:format)                                                      expense_reports#edit
+              expense_report GET    /expense_reports/:id(.:format)                                                           expense_reports#show
+                             PATCH  /expense_reports/:id(.:format)                                                           expense_reports#update
+                             PUT    /expense_reports/:id(.:format)                                                           expense_reports#update
+                             DELETE /expense_reports/:id(.:format)                                                           expense_reports#destroy
+             actual_expenses GET    /actual_expenses(.:format)                                                               actual_expenses#index
+                             POST   /actual_expenses(.:format)                                                               actual_expenses#create
+          new_actual_expense GET    /actual_expenses/new(.:format)                                                           actual_expenses#new
+         edit_actual_expense GET    /actual_expenses/:id/edit(.:format)                                                      actual_expenses#edit
+              actual_expense GET    /actual_expenses/:id(.:format)                                                           actual_expenses#show
+                             PATCH  /actual_expenses/:id(.:format)                                                           actual_expenses#update
+                             PUT    /actual_expenses/:id(.:format)                                                           actual_expenses#update
+                             DELETE /actual_expenses/:id(.:format)                                                           actual_expenses#destroy
+          estimated_expenses GET    /estimated_expenses(.:format)                                                            estimated_expenses#index
+                             POST   /estimated_expenses(.:format)                                                            estimated_expenses#create
+       new_estimated_expense GET    /estimated_expenses/new(.:format)                                                        estimated_expenses#new
+      edit_estimated_expense GET    /estimated_expenses/:id/edit(.:format)                                                   estimated_expenses#edit
+           estimated_expense GET    /estimated_expenses/:id(.:format)                                                        estimated_expenses#show
+                             PATCH  /estimated_expenses/:id(.:format)                                                        estimated_expenses#update
+                             PUT    /estimated_expenses/:id(.:format)                                                        estimated_expenses#update
+                             DELETE /estimated_expenses/:id(.:format)                                                        estimated_expenses#destroy
+                    requests GET    /requests(.:format)                                                                      requests#index
+                             POST   /requests(.:format)                                                                      requests#create
+                 new_request GET    /requests/new(.:format)                                                                  requests#new
+                edit_request GET    /requests/:id/edit(.:format)                                                             requests#edit
+                     request GET    /requests/:id(.:format)                                                                  requests#show
+                             PATCH  /requests/:id(.:format)                                                                  requests#update
+                             PUT    /requests/:id(.:format)                                                                  requests#update
+                             DELETE /requests/:id(.:format)                                                                  requests#destroy
+              admin_accounts GET    /admin/accounts(.:format)                                                                admin/accounts#index
+                             POST   /admin/accounts(.:format)                                                                admin/accounts#create
+           new_admin_account GET    /admin/accounts/new(.:format)                                                            admin/accounts#new
+          edit_admin_account GET    /admin/accounts/:id/edit(.:format)                                                       admin/accounts#edit
+               admin_account GET    /admin/accounts/:id(.:format)                                                            admin/accounts#show
+                             PATCH  /admin/accounts/:id(.:format)                                                            admin/accounts#update
+                             PUT    /admin/accounts/:id(.:format)                                                            admin/accounts#update
+                             DELETE /admin/accounts/:id(.:format)                                                            admin/accounts#destroy
+        admin_admin_accounts GET    /admin/admin_accounts(.:format)                                                          admin/admin_accounts#index
+                             POST   /admin/admin_accounts(.:format)                                                          admin/admin_accounts#create
+     new_admin_admin_account GET    /admin/admin_accounts/new(.:format)                                                      admin/admin_accounts#new
+    edit_admin_admin_account GET    /admin/admin_accounts/:id/edit(.:format)                                                 admin/admin_accounts#edit
+         admin_admin_account GET    /admin/admin_accounts/:id(.:format)                                                      admin/admin_accounts#show
+                             PATCH  /admin/admin_accounts/:id(.:format)                                                      admin/admin_accounts#update
+                             PUT    /admin/admin_accounts/:id(.:format)                                                      admin/admin_accounts#update
+                             DELETE /admin/admin_accounts/:id(.:format)                                                      admin/admin_accounts#destroy
+             admin_approvers GET    /admin/approvers(.:format)                                                               admin/approvers#index
+                             POST   /admin/approvers(.:format)                                                               admin/approvers#create
+          new_admin_approver GET    /admin/approvers/new(.:format)                                                           admin/approvers#new
+         edit_admin_approver GET    /admin/approvers/:id/edit(.:format)                                                      admin/approvers#edit
+              admin_approver GET    /admin/approvers/:id(.:format)                                                           admin/approvers#show
+                             PATCH  /admin/approvers/:id(.:format)                                                           admin/approvers#update
+                             PUT    /admin/approvers/:id(.:format)                                                           admin/approvers#update
+                             DELETE /admin/approvers/:id(.:format)                                                           admin/approvers#destroy
+            admin_submitters GET    /admin/submitters(.:format)                                                              admin/submitters#index
+                             POST   /admin/submitters(.:format)                                                              admin/submitters#create
+         new_admin_submitter GET    /admin/submitters/new(.:format)                                                          admin/submitters#new
+        edit_admin_submitter GET    /admin/submitters/:id/edit(.:format)                                                     admin/submitters#edit
+             admin_submitter GET    /admin/submitters/:id(.:format)                                                          admin/submitters#show
+                             PATCH  /admin/submitters/:id(.:format)                                                          admin/submitters#update
+                             PUT    /admin/submitters/:id(.:format)                                                          admin/submitters#update
+                             DELETE /admin/submitters/:id(.:format)                                                          admin/submitters#destroy
+              admin_managers GET    /admin/managers(.:format)                                                                admin/managers#index
+                             POST   /admin/managers(.:format)                                                                admin/managers#create
+           new_admin_manager GET    /admin/managers/new(.:format)                                                            admin/managers#new
+          edit_admin_manager GET    /admin/managers/:id/edit(.:format)                                                       admin/managers#edit
+               admin_manager GET    /admin/managers/:id(.:format)                                                            admin/managers#show
+                             PATCH  /admin/managers/:id(.:format)                                                            admin/managers#update
+                             PUT    /admin/managers/:id(.:format)                                                            admin/managers#update
+                             DELETE /admin/managers/:id(.:format)                                                            admin/managers#destroy
+              admin_requests GET    /admin/requests(.:format)                                                                admin/requests#index
+                             POST   /admin/requests(.:format)                                                                admin/requests#create
+           new_admin_request GET    /admin/requests/new(.:format)                                                            admin/requests#new
+          edit_admin_request GET    /admin/requests/:id/edit(.:format)                                                       admin/requests#edit
+               admin_request GET    /admin/requests/:id(.:format)                                                            admin/requests#show
+                             PATCH  /admin/requests/:id(.:format)                                                            admin/requests#update
+                             PUT    /admin/requests/:id(.:format)                                                            admin/requests#update
+                             DELETE /admin/requests/:id(.:format)                                                            admin/requests#destroy
+       admin_actual_expenses GET    /admin/actual_expenses(.:format)                                                         admin/actual_expenses#index
+                             POST   /admin/actual_expenses(.:format)                                                         admin/actual_expenses#create
+    new_admin_actual_expense GET    /admin/actual_expenses/new(.:format)                                                     admin/actual_expenses#new
+   edit_admin_actual_expense GET    /admin/actual_expenses/:id/edit(.:format)                                                admin/actual_expenses#edit
+        admin_actual_expense GET    /admin/actual_expenses/:id(.:format)                                                     admin/actual_expenses#show
+                             PATCH  /admin/actual_expenses/:id(.:format)                                                     admin/actual_expenses#update
+                             PUT    /admin/actual_expenses/:id(.:format)                                                     admin/actual_expenses#update
+                             DELETE /admin/actual_expenses/:id(.:format)                                                     admin/actual_expenses#destroy
+    admin_estimated_expenses GET    /admin/estimated_expenses(.:format)                                                      admin/estimated_expenses#index
+                             POST   /admin/estimated_expenses(.:format)                                                      admin/estimated_expenses#create
+ new_admin_estimated_expense GET    /admin/estimated_expenses/new(.:format)                                                  admin/estimated_expenses#new
+edit_admin_estimated_expense GET    /admin/estimated_expenses/:id/edit(.:format)                                             admin/estimated_expenses#edit
+     admin_estimated_expense GET    /admin/estimated_expenses/:id(.:format)                                                  admin/estimated_expenses#show
+                             PATCH  /admin/estimated_expenses/:id(.:format)                                                  admin/estimated_expenses#update
+                             PUT    /admin/estimated_expenses/:id(.:format)                                                  admin/estimated_expenses#update
+                             DELETE /admin/estimated_expenses/:id(.:format)                                                  admin/estimated_expenses#destroy
+                 admin_trips GET    /admin/trips(.:format)                                                                   admin/trips#index
+                             POST   /admin/trips(.:format)                                                                   admin/trips#create
+              new_admin_trip GET    /admin/trips/new(.:format)                                                               admin/trips#new
+             edit_admin_trip GET    /admin/trips/:id/edit(.:format)                                                          admin/trips#edit
+                  admin_trip GET    /admin/trips/:id(.:format)                                                               admin/trips#show
+                             PATCH  /admin/trips/:id(.:format)                                                               admin/trips#update
+                             PUT    /admin/trips/:id(.:format)                                                               admin/trips#update
+                             DELETE /admin/trips/:id(.:format)                                                               admin/trips#destroy
+                  admin_root GET    /admin(.:format)                                                                         admin/accounts#index
+                       trips GET    /trips(.:format)                                                                         trips#index
+                             POST   /trips(.:format)                                                                         trips#create
+                    new_trip GET    /trips/new(.:format)                                                                     trips#new
+                   edit_trip GET    /trips/:id/edit(.:format)                                                                trips#edit
+                        trip GET    /trips/:id(.:format)                                                                     trips#show
+                             PATCH  /trips/:id(.:format)                                                                     trips#update
+                             PUT    /trips/:id(.:format)                                                                     trips#update
+                             DELETE /trips/:id(.:format)                                                                     trips#destroy
+                  home_index GET    /                                                                                        home#index
+                             GET    /home/index(.:format)                                                                    home#index
+                   home_data GET    /home/data(.:format)                                                                     home#data
+         new_account_session GET    /accounts/sign_in(.:format)                                                              devise/sessions#new
+             account_session POST   /accounts/sign_in(.:format)                                                              devise/sessions#create
+     destroy_account_session DELETE /accounts/sign_out(.:format)                                                             devise/sessions#destroy
+        new_account_password GET    /accounts/password/new(.:format)                                                         devise/passwords#new
+       edit_account_password GET    /accounts/password/edit(.:format)                                                        devise/passwords#edit
+            account_password PATCH  /accounts/password(.:format)                                                             devise/passwords#update
+                             PUT    /accounts/password(.:format)                                                             devise/passwords#update
+                             POST   /accounts/password(.:format)                                                             devise/passwords#create
+ cancel_account_registration GET    /accounts/cancel(.:format)                                                               registrations#cancel
+    new_account_registration GET    /accounts/sign_up(.:format)                                                              registrations#new
+   edit_account_registration GET    /accounts/edit(.:format)                                                                 registrations#edit
+        account_registration PATCH  /accounts(.:format)                                                                      registrations#update
+                             PUT    /accounts(.:format)                                                                      registrations#update
+                             DELETE /accounts(.:format)                                                                      registrations#destroy
+                             POST   /accounts(.:format)                                                                      registrations#create
+              edit_submitter GET    /submitters/:id/edit(.:format)                                                           submitters#edit
+                   submitter PATCH  /submitters/:id(.:format)                                                                submitters#update
+                             PUT    /submitters/:id(.:format)                                                                submitters#update
+               edit_approver GET    /approvers/:id/edit(.:format)                                                            approvers#edit
+                    approver PATCH  /approvers/:id(.:format)                                                                 approvers#update
+                             PUT    /approvers/:id(.:format)                                                                 approvers#update
+                             GET    /submitters/:id/edit(.:format)                                                           submitters#edit
+                             PATCH  /submitters/:id(.:format)                                                                submitters#update
+                             PUT    /submitters/:id(.:format)                                                                submitters#update
+                             GET    /approvers/:id/edit(.:format)                                                            approvers#edit
+                             PATCH  /approvers/:id(.:format)                                                                 approvers#update
+                             PUT    /approvers/:id(.:format)                                                                 approvers#update
+                edit_manager GET    /managers/:id/edit(.:format)                                                             managers#edit
+                     manager PATCH  /managers/:id(.:format)                                                                  managers#update
+                             PUT    /managers/:id(.:format)                                                                  managers#update
+   approve_estimated_expense PUT    /estimated_expenses/:id/approve(.:format)                                                estimated_expenses#approve
+                             GET    /estimated_expenses(.:format)                                                            estimated_expenses#index
+                             POST   /estimated_expenses(.:format)                                                            estimated_expenses#create
+                             GET    /estimated_expenses/new(.:format)                                                        estimated_expenses#new
+                             GET    /estimated_expenses/:id/edit(.:format)                                                   estimated_expenses#edit
+                             GET    /estimated_expenses/:id(.:format)                                                        estimated_expenses#show
+                             PATCH  /estimated_expenses/:id(.:format)                                                        estimated_expenses#update
+                             PUT    /estimated_expenses/:id(.:format)                                                        estimated_expenses#update
+                             DELETE /estimated_expenses/:id(.:format)                                                        estimated_expenses#destroy
+      approve_actual_expense PUT    /actual_expenses/:id/approve(.:format)                                                   actual_expenses#approve
+                             GET    /actual_expenses(.:format)                                                               actual_expenses#index
+                             POST   /actual_expenses(.:format)                                                               actual_expenses#create
+                             GET    /actual_expenses/new(.:format)                                                           actual_expenses#new
+                             GET    /actual_expenses/:id/edit(.:format)                                                      actual_expenses#edit
+                             GET    /actual_expenses/:id(.:format)                                                           actual_expenses#show
+                             PATCH  /actual_expenses/:id(.:format)                                                           actual_expenses#update
+                             PUT    /actual_expenses/:id(.:format)                                                           actual_expenses#update
+                             DELETE /actual_expenses/:id(.:format)                                                           actual_expenses#destroy
+                approve_trip PUT    /trips/:id/approve(.:format)                                                             trips#approve
+                 portal_trip GET    /trips/:id/portal(.:format)                                                              trips#portal
+                             GET    /trips(.:format)                                                                         trips#index
+                             POST   /trips(.:format)                                                                         trips#create
+                             GET    /trips/new(.:format)                                                                     trips#new
+                             GET    /trips/:id/edit(.:format)                                                                trips#edit
+                             GET    /trips/:id(.:format)                                                                     trips#show
+                             PATCH  /trips/:id(.:format)                                                                     trips#update
+                             PUT    /trips/:id(.:format)                                                                     trips#update
+                             DELETE /trips/:id(.:format)                                                                     trips#destroy
+             approve_request PUT    /requests/:id/approve(.:format)                                                          requests#approve
+                             GET    /requests(.:format)                                                                      requests#index
+                             POST   /requests(.:format)                                                                      requests#create
+                             GET    /requests/new(.:format)                                                                  requests#new
+                             GET    /requests/:id/edit(.:format)                                                             requests#edit
+                             GET    /requests/:id(.:format)                                                                  requests#show
+                             PATCH  /requests/:id(.:format)                                                                  requests#update
+                             PUT    /requests/:id(.:format)                                                                  requests#update
+                             DELETE /requests/:id(.:format)                                                                  requests#destroy
+      approve_expense_report PUT    /expense_reports/:id/approve(.:format)                                                   expense_reports#approve
+       portal_expense_report GET    /expense_reports/:id/portal(.:format)                                                    expense_reports#portal
+                             GET    /expense_reports(.:format)                                                               expense_reports#index
+                             POST   /expense_reports(.:format)                                                               expense_reports#create
+                             GET    /expense_reports/new(.:format)                                                           expense_reports#new
+                             GET    /expense_reports/:id/edit(.:format)                                                      expense_reports#edit
+                             GET    /expense_reports/:id(.:format)                                                           expense_reports#show
+                             PATCH  /expense_reports/:id(.:format)                                                           expense_reports#update
+                             PUT    /expense_reports/:id(.:format)                                                           expense_reports#update
+                             DELETE /expense_reports/:id(.:format)                                                           expense_reports#destroy
+disapprove_estimated_expense PUT    /estimated_expenses/:id/disapprove(.:format)                                             estimated_expenses#disapprove
+                             GET    /estimated_expenses(.:format)                                                            estimated_expenses#index
+                             POST   /estimated_expenses(.:format)                                                            estimated_expenses#create
+                             GET    /estimated_expenses/new(.:format)                                                        estimated_expenses#new
+                             GET    /estimated_expenses/:id/edit(.:format)                                                   estimated_expenses#edit
+                             GET    /estimated_expenses/:id(.:format)                                                        estimated_expenses#show
+                             PATCH  /estimated_expenses/:id(.:format)                                                        estimated_expenses#update
+                             PUT    /estimated_expenses/:id(.:format)                                                        estimated_expenses#update
+                             DELETE /estimated_expenses/:id(.:format)                                                        estimated_expenses#destroy
+   disapprove_actual_expense PUT    /actual_expenses/:id/disapprove(.:format)                                                actual_expenses#disapprove
+                             GET    /actual_expenses(.:format)                                                               actual_expenses#index
+                             POST   /actual_expenses(.:format)                                                               actual_expenses#create
+                             GET    /actual_expenses/new(.:format)                                                           actual_expenses#new
+                             GET    /actual_expenses/:id/edit(.:format)                                                      actual_expenses#edit
+                             GET    /actual_expenses/:id(.:format)                                                           actual_expenses#show
+                             PATCH  /actual_expenses/:id(.:format)                                                           actual_expenses#update
+                             PUT    /actual_expenses/:id(.:format)                                                           actual_expenses#update
+                             DELETE /actual_expenses/:id(.:format)                                                           actual_expenses#destroy
+             disapprove_trip PUT    /trips/:id/disapprove(.:format)                                                          trips#disapprove
+                             GET    /trips(.:format)                                                                         trips#index
+                             POST   /trips(.:format)                                                                         trips#create
+                             GET    /trips/new(.:format)                                                                     trips#new
+                             GET    /trips/:id/edit(.:format)                                                                trips#edit
+                             GET    /trips/:id(.:format)                                                                     trips#show
+                             PATCH  /trips/:id(.:format)                                                                     trips#update
+                             PUT    /trips/:id(.:format)                                                                     trips#update
+                             DELETE /trips/:id(.:format)                                                                     trips#destroy
+          disapprove_request PUT    /requests/:id/disapprove(.:format)                                                       requests#disapprove
+                             GET    /requests(.:format)                                                                      requests#index
+                             POST   /requests(.:format)                                                                      requests#create
+                             GET    /requests/new(.:format)                                                                  requests#new
+                             GET    /requests/:id/edit(.:format)                                                             requests#edit
+                             GET    /requests/:id(.:format)                                                                  requests#show
+                             PATCH  /requests/:id(.:format)                                                                  requests#update
+                             PUT    /requests/:id(.:format)                                                                  requests#update
+                             DELETE /requests/:id(.:format)                                                                  requests#destroy
+   disapprove_expense_report PUT    /expense_reports/:id/disapprove(.:format)                                                expense_reports#disapprove
+                             GET    /expense_reports(.:format)                                                               expense_reports#index
+                             POST   /expense_reports(.:format)                                                               expense_reports#create
+                             GET    /expense_reports/new(.:format)                                                           expense_reports#new
+                             GET    /expense_reports/:id/edit(.:format)                                                      expense_reports#edit
+                             GET    /expense_reports/:id(.:format)                                                           expense_reports#show
+                             PATCH  /expense_reports/:id(.:format)                                                           expense_reports#update
+                             PUT    /expense_reports/:id(.:format)                                                           expense_reports#update
+                             DELETE /expense_reports/:id(.:format)                                                           expense_reports#destroy
+          rails_service_blob GET    /rails/active_storage/blobs/:signed_id/*filename(.:format)                               active_storage/blobs#show
+   rails_blob_representation GET    /rails/active_storage/representations/:signed_blob_id/:variation_key/*filename(.:format) active_storage/representations#show
+          rails_disk_service GET    /rails/active_storage/disk/:encoded_key/*filename(.:format)                              active_storage/disk#show
+   update_rails_disk_service PUT    /rails/active_storage/disk/:encoded_token(.:format)                                      active_storage/disk#update
+        rails_direct_uploads POST   /rails/active_storage/direct_uploads(.:format)                                           active_storage/direct_uploads#create

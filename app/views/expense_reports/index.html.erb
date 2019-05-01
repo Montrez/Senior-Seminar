@@ -1,0 +1,55 @@
+<div class='container-fluid'>
+  <% unless current_account.nil? %>
+    <% if current_account.accountable_type == 'Submitter'%>
+      <% @reportlist = @submitter_expense_reports %>
+    <% elsif current_account.accountable_type == 'Manager' %>
+      <% @reportlist = @manager_expense_reports %>
+    <% else %>
+      <% @reportlist = Array.new %>
+    <% end %>
+  <% end %>
+  <%
+        @reportlist = @reportlist.sort().paginate(:page => params[:page], :per_page => 5)
+  
+  %>
+  <% if @reportlist.empty?%>
+    <div class='sticky'><h4 style='text-align:center;'><i>No expense reports to show.</i></h4></div>
+  <% else %>
+
+  <table class='table table-striped table-bordered border' style='background-color:#fffefc; box-shadow: 5px 10px 8px 10px #888888; text-align:center;'>
+    <h4><i>My Expense Reports</i></h4>
+    <th>Destination</th>
+    <th>Start Date</th>
+    <th>End Date</th>
+    <th colspan=3>Actions</th>
+    <% @reportlist.each do |r| %> 
+      <tr>
+        <td><%=r.trip.destination%></td>
+        <td><%=r.trip.fromdate%></td>
+        <td><%=r.trip.todate%></td>
+        <td><%=button_to('View Form', expense_report_path(r), :method => :get, class:'btn btn-outline-info btn-sm')%></td>
+        <td>
+          <%=button_to(
+            'Cancel Form', 
+            expense_report_path(r), 
+            :method => :delete, 
+            data: {
+              confirm: 'Do you really want to delete this form? 
+                            This action cannot be undone.'
+            }, 
+            class:'btn btn-outline-warning btn-sm')%>
+      </td>
+      <td><%=button_to('View Approval Details', portal_expense_report_path(r), :method => :get, class:'btn btn-outline-dark btn-sm')%></td>
+      </tr>
+    <% end %>
+  </table>
+  <div class="apple_pagination">
+    <div class="page_info">
+      <%= page_entries_info @reportlist %>
+    </div>
+    <%= will_paginate @reportlist, :container => false %>
+  </div>
+  <% end %>
+
+
+</div>

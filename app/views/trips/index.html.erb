@@ -1,0 +1,55 @@
+<div class='container-fluid'>
+  <% unless current_account.nil? %>
+    <% if current_account.accountable_type == 'Submitter'%>
+      <% @triplist = @submitter_trips %>
+    <% elsif current_account.accountable_type == 'Manager' %>
+      <% @triplist = @manager_trips %>
+    <% else %>
+      <% @triplist = Array.new %>
+    <% end %>
+  <% end %>
+  <%
+        @triplist = @triplist.sort().paginate(:page => params[:page], :per_page => 5)
+  
+  %>
+  <% if @triplist.empty?%>
+    <div class='sticky'><h4 style='text-align:center;'><i>You haven't started any travel authorization forms yet.</i></h4></div>
+  <% else %>
+
+  <table class='table table-striped table-bordered border' style='background-color:#fffefc; box-shadow: 5px 10px 8px 10px #888888; text-align:center;'>
+    <h4><i>My Travel Authorizations</i></h4>
+    <th>Destination</th>
+    <th>Start Date</th>
+    <th>End Date</th>
+    <th colspan=3>Actions</th>
+    <% @triplist.each do |t| %> 
+      <tr>
+        <td><%=t.destination%></td>
+        <td><%=t.fromdate%></td>
+        <td><%=t.todate%></td>
+        <td><%=button_to('View Form', trip_path(t), :method => :get, class:'btn btn-outline-info btn-sm')%></td>
+        <td>
+          <%=button_to(
+            'Cancel Form', 
+            trip_path(t), 
+            :method => :delete, 
+            data: {
+              confirm: 'Do you really want to delete this form? 
+                            This action cannot be undone.'
+            }, 
+            class:'btn btn-outline-warning btn-sm')%>
+      </td>
+      <td><%=button_to('View Approval Details', portal_trip_path(t), :method => :get, class:'btn btn-outline-dark btn-sm')%></td>
+      </tr>
+    <% end %>
+  </table>
+  <div class="apple_pagination">
+    <div class="page_info">
+      <%= page_entries_info @triplist %>
+    </div>
+    <%= will_paginate @triplist, :container => false %>
+  </div>
+  <% end %>
+
+
+</div>

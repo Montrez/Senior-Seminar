@@ -1,0 +1,7 @@
+<tr class="nested-fields">
+  <td><%= f.select :department, ['math', 'computer science', 'chemistry', 'biology'], label: 'Department' %></td>
+  <td><%= f.input :percentrequested, label: 'Percent Requested' %></td>
+  <td>
+    <%= link_to_remove_association "Delete request", f, class: 'btn btn-primary btn-xs' %>
+  </td>
+</tr>
