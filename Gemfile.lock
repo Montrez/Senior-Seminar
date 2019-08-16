@@ -54,13 +54,13 @@ GEM
       sass-rails (~> 5.0)
       selectize-rails (~> 0.6)
     arel (9.0.0)
-    autoprefixer-rails (9.5.1)
+    autoprefixer-rails (9.6.1)
       execjs
     bcrypt (3.1.12)
     bindex (0.7.0)
     bootsnap (1.4.4)
       msgpack (~> 1.0)
-    bootstrap (4.2.1)
+    bootstrap (4.3.1)
       autoprefixer-rails (>= 9.1.0)
       popper_js (>= 1.14.3, < 2)
       sassc-rails (>= 2.0.0)
@@ -95,7 +95,7 @@ GEM
     execjs (2.7.0)
     faker (1.9.3)
       i18n (>= 0.7)
-    ffi (1.10.0)
+    ffi (1.11.1)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
     groupdate (4.1.1)
@@ -146,7 +146,7 @@ GEM
     msgpack (1.2.10)
     multi_json (1.13.1)
     nio4r (2.3.1)
-    nokogiri (1.10.3)
+    nokogiri (1.10.4)
       mini_portile2 (~> 2.4.0)
     orm_adapter (0.5.0)
     pg (0.18.4)
@@ -175,7 +175,7 @@ GEM
     rails-dom-testing (2.0.3)
       activesupport (>= 4.2.0)
       nokogiri (>= 1.6)
-    rails-html-sanitizer (1.0.4)
+    rails-html-sanitizer (1.2.0)
       loofah (~> 2.2, >= 2.2.2)
     rails_12factor (0.0.2)
       rails_serve_static_assets
@@ -188,7 +188,7 @@ GEM
       method_source
       rake (>= 0.8.7)
       thor (>= 0.19.0, < 2.0)
-    rake (12.3.2)
+    rake (12.3.3)
     rb-fsevent (0.10.3)
     rb-inotify (0.10.0)
       ffi (~> 1.0)
@@ -210,7 +210,7 @@ GEM
     sassc (2.0.1)
       ffi (~> 1.9)
       rake
-    sassc-rails (2.1.1)
+    sassc-rails (2.1.2)
       railties (>= 4.0.0)
       sassc (>= 2.0)
       sprockets (> 3.0)
@@ -265,7 +265,7 @@ PLATFORMS
 DEPENDENCIES
   administrate
   bootsnap (>= 1.1.0)
-  bootstrap (~> 4.2.1)
+  bootstrap (~> 4.3.1)
   bootstrap-datepicker-rails
   byebug
   carrierwave
