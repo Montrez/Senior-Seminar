@@ -12,7 +12,7 @@ gem 'chartkick'
 gem 'will_paginate', '~> 3.1.0'
 gem 'groupdate'
 gem 'bootstrap-datepicker-rails'
-gem 'json', '2.0.2'
+gem 'json', '2.3.0'
 
 
 
